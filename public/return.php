@@ -23,6 +23,8 @@ if (isset($_GET['oauth_verifier'])) {
     }';
     $token = new createToken();
     $yourtoken = $token->get_token();
+    $token_dir = '../tokens/';
+    if(!is_dir(token_dir)) mkdir($token_dir,0777,TRUE);
     file_put_contents('../tokens/'. $yourtoken .'.json',$tokenFile);
 
     header('Location: '.$data->application_uri.'?token='.$yourtoken);
